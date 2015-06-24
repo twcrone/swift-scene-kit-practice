@@ -34,6 +34,7 @@ class GameSCNScene: SCNScene {
         self.addGeometryNode()
         self.addLightSourceNode()
         self.addCameraNode()
+        self.addFloorNode()
     }
     
     func addGeometryNode() {
@@ -65,5 +66,14 @@ class GameSCNScene: SCNScene {
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
         scene.rootNode.addChildNode(cameraNode)
     }
-    
+ 
+    func addFloorNode() {
+        let floorNode = SCNNode()
+        let floorGeometry = SCNFloor()
+        floorNode.geometry = floorGeometry
+        floorNode.position.y = -1.0
+        
+        scene.rootNode.addChildNode(floorNode)
+        
+    }
 }
