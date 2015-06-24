@@ -32,6 +32,7 @@ class GameSCNScene: SCNScene {
         scnView.backgroundColor = UIColor.grayColor()
         
         self.addGeometryNode()
+        self.addSecondSphere()
         self.addLightSourceNode()
         self.addCameraNode()
         self.addFloorNode()
@@ -44,6 +45,13 @@ class GameSCNScene: SCNScene {
         let sphereNode = SCNNode(geometry: sphereGeometry)
         sphereNode.position = SCNVector3Make(0.0, 0.0, 0.0)
         scene.rootNode.addChildNode(sphereNode)
+    }
+    
+    func addSecondSphere() {
+        let secondSphereGeometry = SCNSphere(radius: 0.5)
+        let secondSphereNode = SCNNode(geometry: secondSphereGeometry)
+        secondSphereNode.position = SCNVector3(x: 3.0, y: 0.0, z: 0.0)
+        scene.rootNode.addChildNode(secondSphereNode)
     }
     
     func addLightSourceNode() {
