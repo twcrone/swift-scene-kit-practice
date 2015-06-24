@@ -33,6 +33,7 @@ class GameSCNScene: SCNScene {
         
         self.addGeometryNode()
         self.addSecondSphere()
+        self.addThirdSphere()
         self.addLightSourceNode()
         self.addCameraNode()
         self.addFloorNode()
@@ -46,29 +47,57 @@ class GameSCNScene: SCNScene {
         sphereGeometry.firstMaterial?.diffuse.contents = UIColor.orangeColor()
         
         let sphereNode = SCNNode(geometry: sphereGeometry)
-        sphereNode.position = SCNVector3Make(0.0, 10.0, 0.0)
+        sphereNode.position = SCNVector3Make(0.0, 10.0, -25.0)
         sphereNode.physicsBody?.physicsShape = SCNPhysicsShape(geometry: collisionBox, options: nil)
         sphereNode.physicsBody = SCNPhysicsBody.dynamicBody()
-        sphereNode.physicsBody?.mass = 20
-        sphereNode.physicsBody?.angularVelocityFactor = SCNVector3Zero
+        sphereNode.physicsBody?.mass = 50
+        //sphereNode.physicsBody?.angularVelocityFactor = SCNVector3Zero
+        sphereNode.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 15.0)
+        sphereNode.physicsBody?.rollingFriction = 0.5
         sphereNode.name = "bigSphere"
-        
         scene.rootNode.addChildNode(sphereNode)
     }
     
     func addSecondSphere() {
+        let collisionBox = SCNBox(width: 10.0, height: 10.0, length: 10.0,
+            chamferRadius: 0)
+        
         let secondSphereGeometry = SCNSphere(radius: 0.5)
+        secondSphereGeometry.firstMaterial?.diffuse.contents = UIColor.yellowColor()
+
         let secondSphereNode = SCNNode(geometry: secondSphereGeometry)
-        secondSphereNode.position = SCNVector3(x: 3.0, y: 0.0, z: 0.0)
+        secondSphereNode.position = SCNVector3(x: 1.0, y: 0.0, z: 5.0)
+        secondSphereNode.physicsBody?.physicsShape = SCNPhysicsShape(geometry: collisionBox, options: nil)
+        secondSphereNode.physicsBody = SCNPhysicsBody.dynamicBody()
+        secondSphereNode.physicsBody?.mass = 20
+        secondSphereNode.physicsBody?.rollingFriction = 0.5
+
         scene.rootNode.addChildNode(secondSphereNode)
         
-        let moveUp = SCNAction.moveByX(0.0, y: 1.0, z: 0.0, duration: 1.0)
-        let moveDown = SCNAction.moveByX(0.0, y: -1.0, z: 0.0, duration: 1.0)
-        let sequence = SCNAction.sequence([moveUp,moveDown])
-        let repeatedSequence = SCNAction.repeatActionForever(sequence)
-        secondSphereNode.runAction(repeatedSequence)
+//        let moveUp = SCNAction.moveByX(0.0, y: 1.0, z: 0.0, duration: 1.0)
+//        let moveDown = SCNAction.moveByX(0.0, y: -1.0, z: 0.0, duration: 1.0)
+//        let sequence = SCNAction.sequence([moveUp,moveDown])
+//        let repeatedSequence = SCNAction.repeatActionForever(sequence)
+//        secondSphereNode.runAction(repeatedSequence)
     }
     
+    func addThirdSphere() {
+        let collisionBox = SCNBox(width: 10.0, height: 10.0, length: 10.0,
+            chamferRadius: 0)
+        
+        let secondSphereGeometry = SCNSphere(radius: 0.5)
+        secondSphereGeometry.firstMaterial?.diffuse.contents = UIColor.blueColor()
+        
+        let secondSphereNode = SCNNode(geometry: secondSphereGeometry)
+        secondSphereNode.position = SCNVector3(x: 0.0, y: 15.0, z: 7.0)
+        secondSphereNode.physicsBody?.physicsShape = SCNPhysicsShape(geometry: collisionBox, options: nil)
+        secondSphereNode.physicsBody = SCNPhysicsBody.dynamicBody()
+        secondSphereNode.physicsBody?.mass = 20
+        secondSphereNode.physicsBody?.rollingFriction = 0.5
+        
+        scene.rootNode.addChildNode(secondSphereNode)
+    }
+
     func addLightSourceNode() {
         let lightNode = SCNNode()
         lightNode.light = SCNLight()
@@ -96,7 +125,8 @@ class GameSCNScene: SCNScene {
         floorNode.geometry = floorGeometry
         floorNode.position.y = -1.0
         floorNode.physicsBody = SCNPhysicsBody.staticBody()
-        floorNode.physicsBody?.restitution = 1.0
+        floorNode.physicsBody?.restitution = 0.75
+        floorNode.physicsBody?.rollingFriction = 0.5
         
         scene.rootNode.addChildNode(floorNode)
         
