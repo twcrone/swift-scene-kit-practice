@@ -33,6 +33,7 @@ class GameSCNScene: SCNScene {
         
         self.addGeometryNode()
         self.addLightSourceNode()
+        self.addCameraNode()
     }
     
     func addGeometryNode() {
@@ -57,4 +58,12 @@ class GameSCNScene: SCNScene {
         ambientLightNode.light!.color = UIColor.darkGrayColor()
         scene.rootNode.addChildNode(ambientLightNode)
     }
+    
+    func addCameraNode() {
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+        scene.rootNode.addChildNode(cameraNode)
+    }
+    
 }
