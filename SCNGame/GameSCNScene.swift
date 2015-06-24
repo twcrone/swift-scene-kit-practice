@@ -29,6 +29,17 @@ class GameSCNScene: SCNScene {
         scnView.scene = scene
         scnView.allowsCameraControl = true
         scnView.showsStatistics = true
-        scnView.backgroundColor = UIColor.yellowColor()
+        scnView.backgroundColor = UIColor.grayColor()
+        
+        self.addGeometryNode()
+    }
+    
+    func addGeometryNode() {
+        let sphereGeometry = SCNSphere(radius: 1.0)
+        sphereGeometry.firstMaterial?.diffuse.contents = UIColor.orangeColor()
+        
+        let sphereNode = SCNNode(geometry: sphereGeometry)
+        sphereNode.position = SCNVector3Make(0.0, 0.0, 0.0)
+        scene.rootNode.addChildNode(sphereNode)
     }
 }
