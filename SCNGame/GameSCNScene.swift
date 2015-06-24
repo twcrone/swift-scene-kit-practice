@@ -96,7 +96,7 @@ class GameSCNScene: SCNScene {
         floorNode.geometry = floorGeometry
         floorNode.position.y = -1.0
         floorNode.physicsBody = SCNPhysicsBody.staticBody()
-        floorNode.physicsBody?.restitution = 0.0
+        floorNode.physicsBody?.restitution = 1.0
         
         scene.rootNode.addChildNode(floorNode)
         
