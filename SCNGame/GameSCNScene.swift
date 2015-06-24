@@ -39,11 +39,19 @@ class GameSCNScene: SCNScene {
     }
     
     func addGeometryNode() {
+        let collisionBox = SCNBox(width: 10.0, height: 10.0, length: 10.0,
+            chamferRadius: 0)
+
         let sphereGeometry = SCNSphere(radius: 1.0)
         sphereGeometry.firstMaterial?.diffuse.contents = UIColor.orangeColor()
         
         let sphereNode = SCNNode(geometry: sphereGeometry)
-        sphereNode.position = SCNVector3Make(0.0, 0.0, 0.0)
+        sphereNode.position = SCNVector3Make(0.0, 10.0, 0.0)
+        sphereNode.physicsBody?.physicsShape = SCNPhysicsShape(geometry: collisionBox, options: nil)
+        sphereNode.physicsBody = SCNPhysicsBody.dynamicBody()
+        sphereNode.physicsBody?.mass = 20
+        sphereNode.physicsBody?.angularVelocityFactor = SCNVector3Zero
+        
         scene.rootNode.addChildNode(sphereNode)
     }
     
@@ -52,6 +60,12 @@ class GameSCNScene: SCNScene {
         let secondSphereNode = SCNNode(geometry: secondSphereGeometry)
         secondSphereNode.position = SCNVector3(x: 3.0, y: 0.0, z: 0.0)
         scene.rootNode.addChildNode(secondSphereNode)
+        
+        let moveUp = SCNAction.moveByX(0.0, y: 1.0, z: 0.0, duration: 1.0)
+        let moveDown = SCNAction.moveByX(0.0, y: -1.0, z: 0.0, duration: 1.0)
+        let sequence = SCNAction.sequence([moveUp,moveDown])
+        let repeatedSequence = SCNAction.repeatActionForever(sequence)
+        secondSphereNode.runAction(repeatedSequence)
     }
     
     func addLightSourceNode() {
@@ -85,3 +99,4 @@ class GameSCNScene: SCNScene {
         
     }
 }
+
