@@ -51,6 +51,7 @@ class GameSCNScene: SCNScene {
         sphereNode.physicsBody = SCNPhysicsBody.dynamicBody()
         sphereNode.physicsBody?.mass = 20
         sphereNode.physicsBody?.angularVelocityFactor = SCNVector3Zero
+        sphereNode.name = "bigSphere"
         
         scene.rootNode.addChildNode(sphereNode)
     }
@@ -94,6 +95,8 @@ class GameSCNScene: SCNScene {
         let floorGeometry = SCNFloor()
         floorNode.geometry = floorGeometry
         floorNode.position.y = -1.0
+        floorNode.physicsBody = SCNPhysicsBody.staticBody()
+        floorNode.physicsBody?.restitution = 0.0
         
         scene.rootNode.addChildNode(floorNode)
         
