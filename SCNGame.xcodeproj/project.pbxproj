@@ -14,6 +14,7 @@
 		B224B8731B3AF6A6000B1003 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B224B8721B3AF6A6000B1003 /* Images.xcassets */; };
 		B224B8761B3AF6A6000B1003 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B224B8741B3AF6A6000B1003 /* LaunchScreen.xib */; };
 		B224B8821B3AF6A6000B1003 /* SCNGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B224B8811B3AF6A6000B1003 /* SCNGameTests.swift */; };
+		B224B88C1B3AF72B000B1003 /* GameSCNScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B224B88B1B3AF72B000B1003 /* GameSCNScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		B224B87B1B3AF6A6000B1003 /* SCNGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCNGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B224B8801B3AF6A6000B1003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B224B8811B3AF6A6000B1003 /* SCNGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGameTests.swift; sourceTree = "<group>"; };
+		B224B88B1B3AF72B000B1003 /* GameSCNScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSCNScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				B224B8721B3AF6A6000B1003 /* Images.xcassets */,
 				B224B8741B3AF6A6000B1003 /* LaunchScreen.xib */,
 				B224B8671B3AF6A6000B1003 /* Supporting Files */,
+				B224B88B1B3AF72B000B1003 /* GameSCNScene.swift */,
 			);
 			path = SCNGame;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B224B86E1B3AF6A6000B1003 /* GameViewController.swift in Sources */,
+				B224B88C1B3AF72B000B1003 /* GameSCNScene.swift in Sources */,
 				B224B86A1B3AF6A6000B1003 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
