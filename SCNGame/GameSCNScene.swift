@@ -71,7 +71,8 @@ class GameSCNScene: SCNScene {
     
     func knockEmDown() {
         addBoxes()
-        addBall()
+        addBall(2.0, vx: -3.0)
+        addBall(-2.0, vx: 3.0)
     }
     
     func _addBox(position: SCNVector3) {
@@ -88,20 +89,15 @@ class GameSCNScene: SCNScene {
         boxNode.name = "box"
     }
     
-    func addBall() {
-        let collisionBox = SCNBox(width: 10.0, height: 10.0, length: 10.0,
-            chamferRadius: 0)
-        
-        let sphereGeometry = SCNSphere(radius: 0.4)
+    func addBall(x: Float, vx: Float) {
+        let sphereGeometry = SCNSphere(radius: 0.5)
         sphereGeometry.firstMaterial?.diffuse.contents = UIColor.blackColor()
         
         let sphereNode = SCNNode(geometry: sphereGeometry)
-        sphereNode.position = SCNVector3Make(1, 0, 12)
-        sphereNode.physicsBody?.physicsShape = SCNPhysicsShape(geometry: collisionBox, options: nil)
+        sphereNode.position = SCNVector3Make(x, 0, 12)
         sphereNode.physicsBody = SCNPhysicsBody.dynamicBody()
         sphereNode.physicsBody?.mass = 50
-        //sphereNode.physicsBody?.angularVelocityFactor = SCNVector3Zero
-        sphereNode.physicsBody?.velocity = SCNVector3(x: -1.25, y: 0.0, z: -25.0)
+        sphereNode.physicsBody?.velocity = SCNVector3(x: vx, y: 0.0, z: -25.0)
         sphereNode.physicsBody?.rollingFriction = 0.5
         sphereNode.name = "bigSphere"
         scene.rootNode.addChildNode(sphereNode)
