@@ -82,8 +82,12 @@ class GameSCNScene: SCNScene {
 //        secondSphereNode.runAction(repeatedSequence)
     }
     
+    func update() {
+        addBox()
+    }
+    
     func addBox() {
-        let geo = SCNBox(width: 2.0, height: 2.0, length: 2.0, chamferRadius: 0.0)
+        let geo = SCNBox(width: 0.5, height: 0.5, length: 0.5, chamferRadius: 0.0)
         geo.firstMaterial?.diffuse.contents = UIColor.redColor()
         
         let boxNode = SCNNode(geometry: geo)

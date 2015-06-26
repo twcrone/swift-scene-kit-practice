@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, SCNSceneRendererDelegate {
 
     var gameScene: GameSCNScene!
     
@@ -18,8 +18,13 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         let scnView = view as SCNView
+        scnView.delegate = self
         gameScene = GameSCNScene(currentview: scnView)
         
+    }
+    
+    func renderer(aRenderer: SCNSceneRenderer, didApplyAnimationsAtTime time: NSTimeInterval) {
+        gameScene.update()
     }
     
     override func shouldAutorotate() -> Bool {
