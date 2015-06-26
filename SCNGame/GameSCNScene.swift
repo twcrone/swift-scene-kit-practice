@@ -34,6 +34,7 @@ class GameSCNScene: SCNScene {
         self.addGeometryNode()
         self.addSecondSphere()
         self.addThirdSphere()
+        self.addBox()
         self.addLightSourceNode()
         self.addCameraNode()
         self.addFloorNode()
@@ -79,6 +80,21 @@ class GameSCNScene: SCNScene {
 //        let sequence = SCNAction.sequence([moveUp,moveDown])
 //        let repeatedSequence = SCNAction.repeatActionForever(sequence)
 //        secondSphereNode.runAction(repeatedSequence)
+    }
+    
+    func addBox() {
+        let geo = SCNBox(width: 2.0, height: 2.0, length: 2.0, chamferRadius: 0.0)
+        geo.firstMaterial?.diffuse.contents = UIColor.redColor()
+        
+        let boxNode = SCNNode(geometry: geo)
+        boxNode.position = SCNVector3Make(-1.0, 5.0, 6.0)
+//        boxNode.physicsBody?.physicsShape = SCNPhysicsShape(geometry: geo, options: nil)
+        boxNode.physicsBody = SCNPhysicsBody.dynamicBody()
+        boxNode.rotation = SCNVector4(x: 0.5, y: 0.15, z: 0.37, w: 0.5)
+        
+        scene.rootNode.addChildNode(boxNode)
+        
+        boxNode.name = "box"
     }
     
     func addThirdSphere() {
