@@ -35,11 +35,11 @@ class GameSCNScene: SCNScene {
 //        self.addSecondSphere()
 //        self.addThirdSphere()
 //        self.addBox()
-        self.addBoxes()
-        self.addBall()
+//        self.addBall()
         self.addLightSourceNode()
         self.addCameraNode()
         self.addFloorNode()
+        knockEmDown()
     }
 
     func addBoxes() {
@@ -54,13 +54,24 @@ class GameSCNScene: SCNScene {
         
         y++
         
-        _addBox(SCNVector3Make(0.5, y, 0))
-        _addBox(SCNVector3Make(0, y, 0))
+        _addBox(SCNVector3Make(-1, y, 0))
         _addBox(SCNVector3Make(-0.5, y, 0))
+        _addBox(SCNVector3Make(0, y, 0))
+        _addBox(SCNVector3Make(0.5, y, 0))
+        _addBox(SCNVector3Make(1, y, 0))
 
         y++
         
+        _addBox(SCNVector3Make(-1, y, 0))
+        _addBox(SCNVector3Make(-0.5, y, 0))
         _addBox(SCNVector3Make(0, y, 0))
+        _addBox(SCNVector3Make(0.5, y, 0))
+        _addBox(SCNVector3Make(1, y, 0))
+    }
+    
+    func knockEmDown() {
+        addBoxes()
+        addBall()
     }
     
     func _addBox(position: SCNVector3) {
@@ -141,6 +152,14 @@ class GameSCNScene: SCNScene {
     var _counter = 0
     
     func update() {
+        _counter++
+        
+        if _counter % 50 == 0 {
+            knockEmDown()
+        }
+        
+        
+        println(_counter)
 //        _counter++
 //        
 //        if _counter % 5 == 0 {
