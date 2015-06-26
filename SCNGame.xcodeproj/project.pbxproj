@@ -15,6 +15,7 @@
 		B224B8761B3AF6A6000B1003 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B224B8741B3AF6A6000B1003 /* LaunchScreen.xib */; };
 		B224B8821B3AF6A6000B1003 /* SCNGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B224B8811B3AF6A6000B1003 /* SCNGameTests.swift */; };
 		B224B88C1B3AF72B000B1003 /* GameSCNScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B224B88B1B3AF72B000B1003 /* GameSCNScene.swift */; };
+		B224B88E1B3DCBB1000B1003 /* OverlaySKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B224B88D1B3DCBB1000B1003 /* OverlaySKScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		B224B8801B3AF6A6000B1003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B224B8811B3AF6A6000B1003 /* SCNGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGameTests.swift; sourceTree = "<group>"; };
 		B224B88B1B3AF72B000B1003 /* GameSCNScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSCNScene.swift; sourceTree = "<group>"; };
+		B224B88D1B3DCBB1000B1003 /* OverlaySKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaySKScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		B224B85B1B3AF6A6000B1003 = {
 			isa = PBXGroup;
 			children = (
+				B224B88D1B3DCBB1000B1003 /* OverlaySKScene.swift */,
 				B224B8661B3AF6A6000B1003 /* SCNGame */,
 				B224B87E1B3AF6A6000B1003 /* SCNGameTests */,
 				B224B8651B3AF6A6000B1003 /* Products */,
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B224B86E1B3AF6A6000B1003 /* GameViewController.swift in Sources */,
+				B224B88E1B3DCBB1000B1003 /* OverlaySKScene.swift in Sources */,
 				B224B88C1B3AF72B000B1003 /* GameSCNScene.swift in Sources */,
 				B224B86A1B3AF6A6000B1003 /* AppDelegate.swift in Sources */,
 			);
@@ -415,6 +419,7 @@
 				B224B8871B3AF6A6000B1003 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B224B8881B3AF6A6000B1003 /* Build configuration list for PBXNativeTarget "SCNGameTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +428,7 @@
 				B224B88A1B3AF6A6000B1003 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

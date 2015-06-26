@@ -9,12 +9,17 @@
 import Foundation
 import UIKit
 import SceneKit
+import SpriteKit
 
 class GameSCNScene: SCNScene {
     
     let scnView: SCNView!
     let _size: CGSize!
     var scene:SCNScene!
+    
+    let _box:SCNNode!
+    
+    var skScene: OverlaySKScene!
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -39,9 +44,24 @@ class GameSCNScene: SCNScene {
         self.addLightSourceNode()
         self.addCameraNode()
         self.addFloorNode()
-        knockEmDown()
+        self.addSpriteKitOverlay()
+        _box = _addBox(SCNVector3Make(0, 0, 10))
     }
 
+    func addSpriteKitOverlay() {
+        skScene = OverlaySKScene(size: _size, gameScene: self)
+        scnView.overlaySKScene = skScene
+        skScene.scaleMode = SKSceneScaleMode.ResizeFill
+    }
+    
+    func moveBox() {
+        _box.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: -15.0)
+    }
+    
+    func reverse() {
+        _box.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 5.0)
+    }
+    
     func addBoxes() {
 
         var y = Float(-1.0)
@@ -75,7 +95,7 @@ class GameSCNScene: SCNScene {
         addBall(-2.0, vx: 3.0)
     }
     
-    func _addBox(position: SCNVector3) {
+    func _addBox(position: SCNVector3) -> SCNNode {
         let geo = SCNBox(width: 0.5, height: 0.5, length: 0.5, chamferRadius: 0.0)
         geo.firstMaterial?.diffuse.contents = randomColor()
         
@@ -87,6 +107,8 @@ class GameSCNScene: SCNScene {
         scene.rootNode.addChildNode(boxNode)
         
         boxNode.name = "box"
+        
+        return boxNode
     }
     
     func addBall(x: Float, vx: Float) {
@@ -148,14 +170,14 @@ class GameSCNScene: SCNScene {
     var _counter = 0
     
     func update() {
-        _counter++
-        
-        if _counter % 50 == 0 {
-            knockEmDown()
-        }
-        
-        
-        println(_counter)
+//        _counter++
+//        
+//        if _counter % 50 == 0 {
+//            knockEmDown()
+//        }
+//        
+//        
+//        println(_counter)
 //        _counter++
 //        
 //        if _counter % 5 == 0 {
@@ -175,15 +197,15 @@ class GameSCNScene: SCNScene {
     }
     
     func randomColor() -> UIColor {
-        let random = Int(arc4random_uniform(6))
+        let random = Int(arc4random_uniform(5))
         println(random)
         switch random {
-        case 1: return UIColor.redColor()
-        case 2: return UIColor.orangeColor()
-        case 3: return UIColor.yellowColor()
-        case 4: return UIColor.greenColor()
-        case 5: return UIColor.blueColor()
-        case 6: return UIColor.purpleColor()
+        case 0: return UIColor.redColor()
+        case 1: return UIColor.orangeColor()
+        case 2: return UIColor.yellowColor()
+        case 3: return UIColor.greenColor()
+        case 4: return UIColor.blueColor()
+        case 5: return UIColor.purpleColor()
         default: return UIColor.whiteColor()
         }
     }
