@@ -31,13 +31,49 @@ class GameSCNScene: SCNScene {
         scnView.showsStatistics = true
         scnView.backgroundColor = UIColor.grayColor()
         
-        self.addGeometryNode()
-        self.addSecondSphere()
-        self.addThirdSphere()
-        self.addBox()
+//        self.addGeometryNode()
+//        self.addSecondSphere()
+//        self.addThirdSphere()
+//        self.addBox()
+        self.addBoxes()
         self.addLightSourceNode()
         self.addCameraNode()
         self.addFloorNode()
+    }
+
+    func addBoxes() {
+
+        var y = Float(-1.0)
+        
+        _addBox(SCNVector3Make(-1, y, 0))
+        _addBox(SCNVector3Make(-0.5, y, 0))
+        _addBox(SCNVector3Make(0, y, 0))
+        _addBox(SCNVector3Make(0.5, y, 0))
+        _addBox(SCNVector3Make(1, y, 0))
+        
+        y++
+        
+        _addBox(SCNVector3Make(0.5, y, 0))
+        _addBox(SCNVector3Make(0, y, 0))
+        _addBox(SCNVector3Make(-0.5, y, 0))
+
+        y++
+        
+        _addBox(SCNVector3Make(0, y, 0))
+}
+    
+    func _addBox(position: SCNVector3) {
+        let geo = SCNBox(width: 0.5, height: 0.5, length: 0.5, chamferRadius: 0.0)
+        geo.firstMaterial?.diffuse.contents = randomColor()
+        
+        let boxNode = SCNNode(geometry: geo)
+        boxNode.position = position
+        boxNode.physicsBody = SCNPhysicsBody.dynamicBody()
+        //        boxNode.rotation = SCNVector4(x: 0.5, y: 0.15, z: 0.37, w: 0.5)
+        
+        scene.rootNode.addChildNode(boxNode)
+        
+        boxNode.name = "box"
     }
     
     func addGeometryNode() {
@@ -85,30 +121,35 @@ class GameSCNScene: SCNScene {
     var _counter = 0
     
     func update() {
-        _counter++
-        
-        if _counter % 5 == 0 {
-            addSmallSphere()
-        }
-        if _counter % 50 == 0 {
-            addBox()
-        }
-        if _counter % 200 == 0 {
-            addGeometryNode()
-            addThirdSphere()
-        }
-        
-        if _counter % 250 == 0 {
-            addSecondSphere()
-        }
+//        _counter++
+//        
+//        if _counter % 5 == 0 {
+//            addSmallSphere()
+//        }
+//        if _counter % 50 == 0 {
+//            addBox()
+//        }
+//        if _counter % 200 == 0 {
+//            addGeometryNode()
+//            addThirdSphere()
+//        }
+//        
+//        if _counter % 250 == 0 {
+//            addSecondSphere()
+//        }
     }
     
     func randomColor() -> UIColor {
-        let random = Int(arc4random_uniform(3))
+        let random = Int(arc4random_uniform(6))
+        println(random)
         switch random {
-        case 1: return UIColor.orangeColor()
-        case 2: return UIColor.yellowColor()
-        default: return UIColor.greenColor()
+        case 1: return UIColor.redColor()
+        case 2: return UIColor.orangeColor()
+        case 3: return UIColor.yellowColor()
+        case 4: return UIColor.greenColor()
+        case 5: return UIColor.blueColor()
+        case 6: return UIColor.purpleColor()
+        default: return UIColor.whiteColor()
         }
     }
     
