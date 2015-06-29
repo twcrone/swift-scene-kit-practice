@@ -155,7 +155,6 @@ class GameSCNScene: SCNScene {
         }
         
         
-        println(_counter)
 //        _counter++
 //        
 //        if _counter % 5 == 0 {
@@ -176,7 +175,6 @@ class GameSCNScene: SCNScene {
     
     func randomColor() -> UIColor {
         let random = Int(arc4random_uniform(6))
-        println(random)
         switch random {
         case 1: return UIColor.redColor()
         case 2: return UIColor.orangeColor()
